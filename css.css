@@ -1,0 +1,148 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: Figtree-Regular, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    
+}
+
+
+header { 
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    background-color: white;
+    align-items: center;
+    
+ 
+}
+
+.logo_container {
+    margin-left: 10%;
+}
+.logo_container a{
+    text-decoration: none;
+    font-size: 25px;
+    color:black;
+}
+
+.features {
+    display: flex;
+    margin-left: 55%;
+    justify-content: space-evenly;
+    min-width: 200px;     
+}
+.features a{
+    text-decoration: none;
+    color: black;
+}
+
+.get_started {
+    margin-right: 3%;
+        
+}
+.get_started a{
+    text-decoration: none;
+    padding: 8px ;
+    background-color: #026efa;
+    color: white;
+    border-radius: 3px 3px 3px 3px;
+}
+main {
+    background-color:#edf1f1;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 30px;
+    font-size: 30px;
+}
+h5 {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+section{
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+.box1 {
+    margin-top: 20px;
+    height: 300px;
+    width: 250px;
+    background-color: white;
+    margin-left: 150px;
+    border-radius: 8px 8px 8px 8px;
+}
+.starter{
+    margin-top: 15px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 1000px;
+}
+#but{
+    margin-left: 30px;
+    background-color: #bdbdbf;
+}
+.box{
+    height: 315px;
+    width: 220px;
+    background-color: white;
+    border: solid 5px #036ff9;
+    border-radius: 8px 8px 8px 8px;   
+}
+.head{
+    text-align: center;
+    background-color: #036ff9;
+    color: white;
+    padding-bottom: 5px;
+    margin-left: 66px;
+    margin-right: 66px;
+    font-size: 12px;
+    border-radius: 0px 0px 6px 6px ;
+    
+}
+.pro{
+    margin-top: 15px;
+    text-align: center;
+    font-size: 35px;
+    font-weight: 1000px;
+}
+.money{
+    margin-top: 5px;
+    text-align: center;
+    font-size: 45px;
+    font-weight: 1000px;
+}
+sub{
+    font-size: 15px;
+}
+ul{
+    margin-left: 40px;
+    margin-top: 20px;
+}
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left:15px;
+    margin-top:20px;
+    margin-bottom:30px;
+    background-color:#036ff9 ;
+    color: white;
+    size: 100px;
+    border: none;             /* Removes the ugly default grey border */
+    border-radius: 2px;
+    padding: 8px 60px;
+    text-align: center;
+}
+.box2 {
+    margin-top: 20px;
+    height: 300px;
+    width: 250px;
+    background-color: white;
+    margin-right: 150px;
+    border-radius: 8px 8px 8px 8px;
+}
