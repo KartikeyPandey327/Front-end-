@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body {
+  background-color: black;
+}
+header{
+    padding:20px 35px;
+    display: flex;
+    justify-content: space-between; 
+    background-color: rgb(37, 1, 1);
+    align-items: center;
+}
+
+.logo_bar a img {
+    height: 40px;
+}
+.logo_bar h6 {
+    color:white;
+    font-size: 13px;
+}
+.logo_bar nav {
+    display: flex;
+    gap: 8px;
+} 
+.control_bar nav{
+    display:flex;
+    gap:12px;
+}
+.control_bar nav a{
+    text-decoration: 0;
+    color:white;
+}
+.icons nav{
+    display:flex;
+    gap:12px;
+}
+.icons nav a{
+    text-decoration: 0;
+}
+.material-symbols-outlined{
+    color:white
+}  
+#menu{
+    display:block;
+}
+
+h1{
+    color:white;
+    font-size: 28px;
+    font-weight: 200;
+}
+.content section {
+    padding:40px 40px 0 30px;
+}
+.content section a img{
+    height:350px
+}
+section{
+    display:flex;
+    justify-content:space-between;
+}
+@media (max-width:955px){
+    h1{
+        font-size: 23px;
+    }
+    .content section a img{
+    height:300px
+}
+}
+@media (max-width:850px){
+    h1{
+        font-size: 20px;
+    }
+    .content section a img{
+    height:325px
+    }
+}
+
+
+
+
+@media (max-width:750px) {
+    .logo_bar h6{
+        display:none;
+    }
+
+    .control_bar {
+        display:none;
+    }
+    .for_laptop{
+        display:none;
+    }
+    #icons nav a span menu{
+        display: block;
+        text-decoration: 0;
+    }
+    section{
+        flex-direction:column-reverse;
+        align-items: center;
+        gap:20px;
+    }
+    .content section a img{
+    height:300px
+}
+
+    
+}
