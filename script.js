@@ -1,42 +1,40 @@
-function getQuote(service, hours, rate){
-    if(hours=== 0){
-        return`No hours billied!!`;
-    }
-    let total=hours*rate;
-    if (hours>=5){
-        total=total*0.9
-        
-    }
-    return `${service} for ${hours} hours will cost= $${total}`
+reviews=[
+    { name:"kartikey", role:"front end dev", city:"pune"},
+    { name:"ishika", role:"back end dev", city:"nagpur"},
+    { name:"bhende", role:"full stack dev", city:"hinganghat"}
+]
+let index=0;
+
+
+const review_name=document.querySelector("#review-name");
+const review_role=document.querySelector("#review-role");
+const review_city=document.querySelector("#review-city");
+const prev=document.querySelector("#prev");
+const next=document.querySelector("#next");
+
+function showReview(name, role, city){
+    const current=reviews[index];
+    review_name.textContent=current.name
+    review_role.textContent=current.role
+    review_city.textContent=current.city
 }
-
-let hours=1;
-const rate=50;
-
-
-const minus_btn = document.querySelector("#minus-btn");
-const plus_btn = document.querySelector("#plus-btn");
-const reset_btn = document.querySelector("#reset-btn");
-const hours_display = document.querySelector("#hours-display");
-const Submit_btn = document.querySelector("#Submit");
-const Total = document.querySelector("#total");
-
-minus_btn.addEventListener("click", () => {
-    if(hours>1){
-        hours=hours-1;
-        hours_display.textContent= `${hours}`;
+prev.addEventListener("click", () => {
+    if (index===0){
+        index=2;
+    }else{
+        index=index-1;
     }
-} );
-plus_btn.addEventListener("click", () => {
-    hours=hours+1;
-    hours_display.textContent= `${hours}`;
-} );
-reset_btn.addEventListener("click", () => {
-    hours=1;
-    hours_display.textContent= `${hours}`;
-} );
-Submit_btn.addEventListener("click", () => {
-    Total.textContent = getQuote("Web Design", hours, rate);
-} );
+    showReview();
+});
+next.addEventListener("click", () => {
+    if (index===2){
+        index=0;
+    }else{
+        index=index+1;
+    }
+    showReview();
+});
+showReview();
+
 
 
