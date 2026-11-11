@@ -1,4 +1,8 @@
-.dark {
-    background-color:black;
+#popup{
+    display:none;
+
+}
+#popup.show{
+    display:block;
     
 }

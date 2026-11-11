@@ -1,6 +1,10 @@
-const page   = document.querySelector("#theme_btn");
-const button = document.querySelector("#dark_btn");
+const pop_up = document.querySelector("#popup")
+const open_pop = document.querySelector("#open-btn")
+const close_pop = document.querySelector("#close-btn")
 
-button.addEventListener("click", () => {
-    page.classList.toggle("dark");
-});
+open_pop.addEventListener("click", () => { pop_up.classList.add("show")
+
+})
+close_pop.addEventListener("click", () => { pop_up.classList.remove("show")
+
+})
