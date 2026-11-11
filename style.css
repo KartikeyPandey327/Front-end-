@@ -1,8 +1,8 @@
-#popup{
-    display:none;
+#user_name.error{
+    color:red;
 
 }
-#popup.show{
-    display:block;
-    
+#user_name.success{
+    color:green;
+
 }
