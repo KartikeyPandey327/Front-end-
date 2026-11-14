@@ -1,11 +1,28 @@
-const Rawprices = [
-    25, 60, 120, 250, 500
+const clientTasks = [
+  { service: "Landing Page Design", hours: 10, rate: 50 },
+  { service: "Mobile Menu Bug Fix", hours: 3, rate: 60 },
+  { service: "SEO Optimization", hours: 5, rate: 40 }
 ];
 
-const discounted = Rawprices.map((p) => {
-    return p * 0.9 ;
+const invoice_list = document.querySelector("#invoice-list");
+const grand_total = document.querySelector("#grand-total");
+
+const billedTasks = clientTasks.map((task) => {
+  return {
+    service: task.service,
+    total: task.hours * task.rate
+  };
 });
 
-discounted.forEach((price, index) => {
-    console.log(`Price ${index + 1}: $${price}`)
+let grandTotal = 0;
+
+billedTasks.forEach((task, index) => {
+  grandTotal += task.total;
+
+  const card = document.createElement("p");
+  card.textContent = `${index + 1}. ${task.service} - $${task.total}`
+
+    invoice_list.append(card);
 });
+grand_total.textContent=` Grand Total: $${grandTotal}`;
+
