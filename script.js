@@ -1,16 +1,11 @@
-const services=[
-    {title:"Web Design", rate:50},
-    {title:"game Design", rate:100},
-    {title:"software Design", rate:500}
+const Rawprices = [
+    25, 60, 120, 250, 500
 ];
 
-const service_list = document.querySelector("#service-list")
+const discounted = Rawprices.map((p) => {
+    return p * 0.9 ;
+});
 
-for (const service of services){
-    const card = document.createElement("p");
-
-    card.textContent = `${service.title} - $${service.rate}`;
-
-    service_list.append(card);
-}
-
+discounted.forEach((price, index) => {
+    console.log(`Price ${index + 1}: $${price}`)
+});
