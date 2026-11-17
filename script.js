@@ -1,20 +1,23 @@
-const author_text = document.querySelector("#author-text");
-const quote_text = document.querySelector("#quote-text");
-const get_quote_btn = document.querySelector("#get-quote-btn");
+const catalog = document.querySelector("#catalog");
 
-async function fetchQuote() {
-    get_quote_btn.textContent = "Loading..."; // 1. Tell user we are fetching!
-  
-    const responce = await fetch("https://dummyjson.com/quotes/random");
+async function testAPI() {
 
-    const data = await responce.json();
-    quote_text.textContent = `${data.quote}`
-    author_text.textContent = `${data.author}`
-    
-    get_quote_btn.textContent = "Get New Quote"; // 2. Reset button text!
+    const response = await fetch("https://dummyjson.com/products?limit=10");
+
+    const data = await response.json();
+
+    const budgetItems = data.products.filter((item) => item.price<30)
+
+    budgetItems.forEach((item) => {
+        const card = document.createElement("article");
+
+        card.innerHTML=`
+        <h1>${item.title}</h1>
+        <h3>$${item.price}</h3>
+        <img src="${item.thumbnail}" style="width: 80px;">.
+        `
+        catalog.append(card);
+    });
 }
 
-get_quote_btn.addEventListener("click", () => {
-    fetchQuote();
-})
-
+testAPI();
