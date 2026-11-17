@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    <title>API 4</title>
+    <title>Add New Product</title>
 </head>
 <body>
     <div id="catalog"></div>
+    <form id="product-form" style="margin: 20px 0; display: flex; gap: 10px;">
+    <input type="text" id="title-input" placeholder="Product Title" required>
+    <input type="number" id="price-input" placeholder="Price ($)" required>
+    <button type="submit" id="submit-btn">Upload to Cloud</button>
+    </form>
+    <p id="status-msg"></p>
 
     <script src="script.js"></script>
 </body>
