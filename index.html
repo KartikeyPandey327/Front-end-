@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Add New Product</title>
+    
+    <title>The Live E-Commerce Shopping Cart 🛒</title>
 </head>
 <body>
-    <div id="catalog"></div>
-    <form id="product-form" style="margin: 20px 0; display: flex; gap: 10px;">
-    <input type="text" id="title-input" placeholder="Product Title" required>
-    <input type="number" id="price-input" placeholder="Price ($)" required>
-    <button type="submit" id="submit-btn">Upload to Cloud</button>
-    </form>
-    <p id="status-msg"></p>
-
+    
+    <div id="cart-box">
+        Cart (<span id="cart-count">0</span> items)- Total:$<span id="cart-total">0</span>
+        <ul id="cart-list"></ul>
+    </div>
+    <div id="cart-catalog"></div>
+    
     <script src="script.js"></script>
 </body>
 </html>
