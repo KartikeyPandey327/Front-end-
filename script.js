@@ -1,72 +1,97 @@
-const cart_box = document.querySelector("#cart-box");
+const search_input = document.querySelector("#search-input");
+const product_grid = document.querySelector("#product-grid");
 const cart_count = document.querySelector("#cart-count");
 const cart_total = document.querySelector("#cart-total");
-const cart_list = document.querySelector("#cart-list");
-const cart_catalog = document.querySelector("#cart-catalog");
+const cart_items = document.querySelector("#cart-items");
 
-
+let allProducts = [];
 let cart = [];
 
-function renderCart(){
-    cart_list.innerHTML="";
+function addToCart(product){
+   const existingItem = cart.find(item => item.id === product.id);
+    if (existingItem){
+        existingItem.qty += 1;
+    }else{
+        cart.push({
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        qty: 1
+        })}
+        renderCart();
+    }
 
-    let total = 0;
+    function renderCart(){
+        cart_items.innerHTML = "";
+        if (cart.length === 0 ){
+            cart_count.textContent = "0";
+            cart_total.textContent= "$0.00";
+            cart_items.textContent = " Your Cart is Empty." ;
+            return;       
+        } 
+        const totalCount = cart.reduce((acc, item) => acc + item.qty, 0);
+        cart_count.textContent = totalCount;
 
-    cart.forEach((cartItem, index) => {
-        const remove_btn = document.createElement("button");
-        remove_btn.textContent = "Remove";
+        const grandTotal = cart.reduce((acc, item) => {
+            return acc + (item.price * item.qty);
+        }, 0);
 
-        remove_btn.addEventListener("click", () => {
+        cart_total.textContent = `$${grandTotal.toFixed(2)}`;
+
+        cart.forEach((item, index) => {
+            const row = document.createElement("div");
+            row.innerHTML=`${item.title} (x${item.qty}) - $${(item.price * item.qty).toFixed(2)}`
+        ;
+        const remove = document.createElement("button");
+        remove.textContent="REMOVE FROM CART";
+        remove.addEventListener("click", () => {
             cart.splice(index, 1);
             renderCart();
         });
-        total = total + cartItem.price;
-
-        const list = document.createElement("li");
-        list.textContent=`${cartItem.title} - $${cartItem.price}`
-        list.append(remove_btn);
-        cart_list.append(list);
-        
-
+        row.append(remove);
+        cart_items.append(row);
     });
-    cart_count.textContent=`${cart.length}`
-    cart_total.textContent=`${total.toFixed(2)}`
-
-    localStorage.setItem("myCart", JSON.stringify(cart));
-
-    
 }
 
-async function getProducts(){
-    const response = await fetch("https://dummyjson.com/products?limit=8");
+function displayProducts(items){
+    product_grid.textContent="";
 
-    const data = await response.json();
-
-    data.products.forEach((item) => {
-        const addBtn = document.createElement("button");
-        addBtn.textContent = "Add to Cart";
-        addBtn.addEventListener("click", () => {
-            console.log("Added:", item.title);
-            cart.push(item);
-            renderCart();
-
-        });
-
-        
+    if (items.length === 0){
+        product_grid.textContent="No Products found";
+        return;
+    }
+    items.forEach((item) => {
         const card = document.createElement("article");
         card.innerHTML=`
-            <h1>${item.title}</h1>
-            <h2>$${item.price}</h2>
-            <img src="${item.thumbnail}" style="width: 100px;">
+            <img src="${item.thumbnail}" alt="${item.title}">
+            <h3>${item.title}</h3>
+            <p>$${item.price.toFixed(2)}</p>
         `
-        card.append(addBtn);
-        cart_catalog.append(card)
-    } );
-}
-const saved_cart = localStorage.getItem("myCart");
-    if (saved_cart !== null){
-        cart = JSON.parse(saved_cart);
-        renderCart();
-    }
-getProducts();
+        const button = document.createElement("button");
+        button.textContent="Add to Cart";
+        button.addEventListener("click", () => {
+            addToCart(item);
+        });
+        card.append(button);
+        product_grid.append(card);
 
+    });
+}
+
+async function fetchProducts(){
+    
+    product_grid.textContent="Loading products from the cloud....";
+    try{
+        const response = await fetch("https://dummyjson.com/products?limit=8")
+
+        const data = await response.json();
+
+        allProducts = data.products;
+        displayProducts(allProducts);
+
+    }catch{
+        product_grid.textContent="Failed to load products. Please refresh.";
+
+    }
+}
+fetchProducts();
