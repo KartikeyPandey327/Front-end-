@@ -7,6 +7,16 @@ const cart_items = document.querySelector("#cart-items");
 let allProducts = [];// we create two container....
 let cart = [];
 
+function search_products(){ // search bar
+    search_input.addEventListener("input", () => {
+        let query = search_input.value.toLowerCase(); // first whatever user writes convert it into to lower case
+        const filtered = allProducts.filter(item => {
+            return item.title.toLowerCase().includes(query); // now that value gets cheacked 
+        });
+        displayProducts(filtered) // that products are now displayed
+    })
+}
+
 function addToCart(product){ // step 3
    const existingItem = cart.find(item => item.id === product.id); // cheacked if the item which added to cart already exist in the cart or not... and .find() is a boolean... either true or false
     if (existingItem){
@@ -101,4 +111,5 @@ async function fetchProducts(){ // making this funtion was the 1 step
 
     }
 }
+search_products();
 fetchProducts();
